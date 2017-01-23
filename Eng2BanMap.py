@@ -11,7 +11,3 @@ class Eng2BanMap:
 
     def ge_bengali_character(self, english_character):
         return self.english_to_bengali[english_character]
-
-
-map = Eng2BanMap()
-print(map.ge_bengali_character("k"))
