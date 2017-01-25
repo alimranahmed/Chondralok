@@ -46,6 +46,9 @@ class Window(QtGui.QMainWindow):
         print("Application closed!")
         sys.exit()
 
+    def keyPressEvent(self, QKeyEvent):
+        print(QKeyEvent.key());
+
 
 def run():
     app = QtGui.QApplication(sys.argv)
