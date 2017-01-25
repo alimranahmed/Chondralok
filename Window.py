@@ -14,7 +14,7 @@ class Window(QtGui.QMainWindow):
         extract_action = QtGui.QAction("&Quit", self)
         extract_action.setShortcut("Ctrl+Q")
         extract_action.setStatusTip("Leave this app")
-        # extractAction.triggered.connect(self.close_application())
+        extract_action.triggered.connect(self.close_application())
 
         # self.setStatusBar()
 
