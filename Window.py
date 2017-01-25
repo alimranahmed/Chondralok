@@ -9,6 +9,19 @@ class Window(QtGui.QMainWindow):
         self.setGeometry(50, 50, 500, 300)
         self.setWindowTitle("Qt Main Window")
         self.setWindowIcon(QtGui.QIcon("pencil.png"))
+
+        # add main menu
+        extract_action = QtGui.QAction("&Quit", self)
+        extract_action.setShortcut("Ctrl+Q")
+        extract_action.setStatusTip("Leave this app")
+        # extractAction.triggered.connect(self.close_application())
+
+        # self.setStatusBar()
+
+        main_menu = self.menuBar()
+        file_menu = main_menu.addMenu("&File")
+        file_menu.addAction(extract_action)
+
         self.organize()
         self.show()
 
