@@ -10,26 +10,27 @@ class Window(QtGui.QMainWindow):
         self.setWindowTitle("Qt Main Window")
         self.setWindowIcon(QtGui.QIcon("pencil.png"))
 
-        # add main menu
-        extract_action = QtGui.QAction("&Quit", self)
-        extract_action.setShortcut("Ctrl+Q")
-        extract_action.setStatusTip("Leave this app")
-        extract_action.triggered.connect(self.close_application())
+        # menu action
+        action = QtGui.QAction("&Quit", self)
+        action.setShortcut("Ctrl+Q")
+        action.triggered.connect(self.close_application)
 
-        # self.setStatusBar()
+        # status bar
+        self.statusBar().showMessage("Home screen")
 
-        main_menu = self.menuBar()
-        file_menu = main_menu.addMenu("&File")
-        file_menu.addAction(extract_action)
+        # menu bar
+        menu_bar = self.menuBar()
+        file_menu = menu_bar.addMenu('&File')
+        file_menu.addAction(action)
 
-        self.organize()
+        self.organizeHome()
         self.show()
 
-    def organize(self):
+    def organizeHome(self):
         btn = QtGui.QPushButton("Click to CLOSE", self)
         btn.clicked.connect(self.close_application)
         btn.resize(btn.sizeHint())
-        btn.move(150, 100)
+        btn.move(150, 200)
         self.show()
 
     def close_application(self):
