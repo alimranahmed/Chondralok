@@ -11,9 +11,9 @@ class Window(QtGui.QMainWindow):
         self.setWindowIcon(QtGui.QIcon("pencil.png"))
 
         # menu action
-        action = QtGui.QAction("&Quit", self)
-        action.setShortcut("Ctrl+Q")
-        action.triggered.connect(self.close_application)
+        action_quit = QtGui.QAction("&Quit", self)
+        action_quit.setShortcut("Ctrl+Q")
+        action_quit.triggered.connect(self.close_application)
 
         # status bar
         self.statusBar().showMessage("Home screen")
@@ -21,7 +21,7 @@ class Window(QtGui.QMainWindow):
         # menu bar
         menu_bar = self.menuBar()
         file_menu = menu_bar.addMenu('&File')
-        file_menu.addAction(action)
+        file_menu.addAction(action_quit)
 
         self.organizeHome()
         self.show()
@@ -31,6 +31,15 @@ class Window(QtGui.QMainWindow):
         btn.clicked.connect(self.close_application)
         btn.resize(btn.sizeHint())
         btn.move(150, 200)
+
+        # close action
+        close_action = QtGui.QAction(QtGui.QIcon("pencil.png"), 'Quit with icon', self)
+        close_action.triggered.connect(self.close_application)
+
+        # toolbar
+        toolbar = self.addToolBar("A Toolbar")
+        toolbar.addAction(close_action)
+
         self.show()
 
     def close_application(self):
