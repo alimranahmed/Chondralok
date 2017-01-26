@@ -9,5 +9,5 @@ class Eng2BanMap:
 
         self.english_to_bengali = {value: key for key, value in bengali_to_english.items()}
 
-    def ge_bengali_character(self, english_character):
+    def get_bengali_character(self, english_character):
         return self.english_to_bengali[english_character]

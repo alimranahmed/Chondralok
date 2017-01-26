@@ -1,5 +1,6 @@
 import sys
 from PyQt4 import QtGui, QtCore
+import Eng2BanMap
 
 
 class Window(QtGui.QMainWindow):
@@ -47,7 +48,7 @@ class Window(QtGui.QMainWindow):
         sys.exit()
 
     def keyPressEvent(self, QKeyEvent):
-        print(QKeyEvent.key());
+        print(chr(QKeyEvent.key() + 32))
 
 
 def run():
