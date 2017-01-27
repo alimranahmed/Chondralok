@@ -2,7 +2,7 @@ import sys
 
 from PyQt4 import QtGui
 
-from src import Eng2BanMap
+from src.Eng2BanMap import Eng2BanMap
 
 
 class Window(QtGui.QMainWindow):
@@ -26,10 +26,10 @@ class Window(QtGui.QMainWindow):
         file_menu = menu_bar.addMenu('&File')
         file_menu.addAction(action_quit)
 
-        self.organizeHome()
+        self.organize_home()
         self.show()
 
-    def organizeHome(self):
+    def organize_home(self):
         btn = QtGui.QPushButton("Click to CLOSE", self)
         btn.clicked.connect(self.close_application)
         btn.resize(btn.sizeHint())
@@ -50,7 +50,7 @@ class Window(QtGui.QMainWindow):
         sys.exit()
 
     def keyPressEvent(self, QKeyEvent):
-        english_to_bengali = Eng2BanMap.Eng2BanMap()
+        english_to_bengali = Eng2BanMap()
         bengali_char = english_to_bengali.get_bengali_character(chr(QKeyEvent.key() + 32))
         print(chr(QKeyEvent.key() + 32))
         print(bengali_char)
