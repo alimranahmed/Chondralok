@@ -1,5 +1,5 @@
 import sys
-from PyQt4 import QtGui
+from PyQt4 import QtGui, QtCore
 from src.Eng2BanMap import Eng2BanMap
 
 
@@ -48,10 +48,16 @@ class Window(QtGui.QMainWindow):
         sys.exit()
 
     def keyPressEvent(self, QKeyEvent):
+        modifiers = QtGui.QApplication.keyboardModifiers()
+
+        if modifiers & QtCore.Qt.ShiftModifier:
+            english_char = chr(QKeyEvent.key())
+        else:
+            english_char = chr(QKeyEvent.key() + 32)
+
         english_to_bengali = Eng2BanMap()
-        bengali_char = english_to_bengali.get_bengali_character(chr(QKeyEvent.key() + 32))
-        print(chr(QKeyEvent.key() + 32))
-        print(bengali_char)
+        bengali_char = english_to_bengali.get_bengali_character(english_char)
+        print(english_char+" --> "+bengali_char)
 
 
 def run():
