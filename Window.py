@@ -48,7 +48,10 @@ class Window(QtGui.QMainWindow):
         sys.exit()
 
     def keyPressEvent(self, QKeyEvent):
+        english_to_bengali = Eng2BanMap.Eng2BanMap()
+        bengali_char = english_to_bengali.get_bengali_character(chr(QKeyEvent.key() + 32))
         print(chr(QKeyEvent.key() + 32))
+        print(bengali_char)
 
 
 def run():
