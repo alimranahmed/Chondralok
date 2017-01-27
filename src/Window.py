@@ -1,7 +1,5 @@
 import sys
-
 from PyQt4 import QtGui
-
 from src.Eng2BanMap import Eng2BanMap
 
 
