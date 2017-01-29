@@ -16,6 +16,10 @@ class Window(QtGui.QMainWindow):
         action_quit.setShortcut("Ctrl+Q")
         action_quit.triggered.connect(self.close_application)
 
+        action_editor = QtGui.QAction("&Open Editor", self)
+        action_editor.setShortcut("Ctrl+E")
+        action_editor.triggered.connect(self.open_editor)
+
         # status bar
         self.statusBar().showMessage("Home screen")
 
@@ -23,6 +27,9 @@ class Window(QtGui.QMainWindow):
         menu_bar = self.menuBar()
         file_menu = menu_bar.addMenu('&File')
         file_menu.addAction(action_quit)
+
+        editor_menu = menu_bar.addMenu('&Editor')
+        editor_menu.addAction(action_editor)
 
         self.organize_home()
         self.show()
@@ -43,21 +50,28 @@ class Window(QtGui.QMainWindow):
 
         self.show()
 
-    def close_application(self):
-        print("Application closed!")
-        sys.exit()
+    def open_editor(self):
+        self.text_editor = QtGui.QTextEdit()
+        self.setCentralWidget(self.text_editor)
+        self.text_editor.keyPressEvent = self.editor_key_press_event
 
-    def keyPressEvent(self, QKeyEvent):
+    def editor_key_press_event(self, key_event):
         modifiers = QtGui.QApplication.keyboardModifiers()
 
         if modifiers & QtCore.Qt.ShiftModifier:
-            english_char = chr(QKeyEvent.key())
+            english_char = chr(key_event.key())
         else:
-            english_char = chr(QKeyEvent.key() + 32)
+            english_char = chr(key_event.key() + 32)
 
         english_to_bengali = Eng2BanMap()
         bengali_char = english_to_bengali.get_bengali_character(english_char)
-        print(english_char+" --> "+bengali_char)
+        print(english_char + " --> " + bengali_char)
+        self.text_editor.(bengali_char)
+
+    @staticmethod
+    def close_application():
+        print("Application closed!")
+        sys.exit()
 
 
 def run():
