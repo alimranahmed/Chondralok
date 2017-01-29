@@ -66,7 +66,7 @@ class Window(QtGui.QMainWindow):
         english_to_bengali = Eng2BanMap()
         bengali_char = english_to_bengali.get_bengali_character(english_char)
         print(english_char + " --> " + bengali_char)
-        self.text_editor.(bengali_char)
+        self.text_editor.insertPlainText(bengali_char)
 
     @staticmethod
     def close_application():
