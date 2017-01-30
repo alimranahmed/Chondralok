@@ -11,6 +11,8 @@ class Window(QtGui.QMainWindow):
         self.setWindowTitle("Qt Main Window")
         self.setWindowIcon(QtGui.QIcon("pencil.png"))
 
+        self.text_editor = QtGui.QTextEdit()
+
         # menu action
         action_quit = QtGui.QAction("&Quit", self)
         action_quit.setShortcut("Ctrl+Q")
@@ -51,7 +53,6 @@ class Window(QtGui.QMainWindow):
         self.show()
 
     def open_editor(self):
-        self.text_editor = QtGui.QTextEdit()
         self.setCentralWidget(self.text_editor)
         self.text_editor.keyPressEvent = self.editor_key_press_event
 
