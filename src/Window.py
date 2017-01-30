@@ -35,14 +35,14 @@ class Window(QtGui.QMainWindow):
         self.show()
 
     def organize_home(self):
-        btn = QtGui.QPushButton("Click to CLOSE", self)
-        btn.clicked.connect(self.close_application)
-        btn.resize(btn.sizeHint())
-        btn.move(150, 200)
+        # btn = QtGui.QPushButton("Click to CLOSE", self)
+        # btn.clicked.connect(self.close_application)
+        # btn.resize(btn.sizeHint())
+        # btn.move(150, 200)
 
         # close action
         close_action = QtGui.QAction(QtGui.QIcon("pencil.png"), 'Quit with icon', self)
-        close_action.triggered.connect(self.close_application)
+        close_action.triggered.connect(self.open_editor)
 
         # toolbar
         toolbar = self.addToolBar("A Toolbar")
