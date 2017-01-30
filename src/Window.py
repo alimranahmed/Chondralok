@@ -54,6 +54,7 @@ class Window(QtGui.QMainWindow):
 
     def open_editor(self):
         self.setCentralWidget(self.text_editor)
+        self.text_editor.setFocus()
         self.text_editor.keyPressEvent = self.editor_key_press_event
 
     def editor_key_press_event(self, key_event):
