@@ -29,9 +29,7 @@ class Window(QtGui.QMainWindow):
         menu_bar = self.menuBar()
         file_menu = menu_bar.addMenu('&File')
         file_menu.addAction(action_quit)
-
-        editor_menu = menu_bar.addMenu('&Editor')
-        editor_menu.addAction(action_editor)
+        file_menu.addAction(action_editor)
 
         self.organize_home()
         self.show()
