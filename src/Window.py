@@ -39,7 +39,7 @@ class Window(QtGui.QMainWindow):
 
     def organize_home(self):
         # close action
-        open_editor = QtGui.QAction(QtGui.QIcon("pencil.png"), 'Quit with icon', self)
+        open_editor = QtGui.QAction(QtGui.QIcon("pencil.png"), 'Open editor', self)
         open_editor.triggered.connect(self.open_editor)
 
         # toolbar
