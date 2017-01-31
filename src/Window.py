@@ -10,7 +10,7 @@ class Window(QtGui.QMainWindow):
         self.english_to_bengali = Eng2BanMap()
         self.last_bengali_char = ' '
 
-        self.setGeometry(50, 50, 500, 300)
+        self.setGeometry(50, 50, 700, 400)
         self.setWindowTitle("Chondralok")
         self.setWindowIcon(QtGui.QIcon("pencil.png"))
 
@@ -56,7 +56,8 @@ class Window(QtGui.QMainWindow):
     def editor_key_press_event(self, key_event):
         try:
             modifiers = QtGui.QApplication.keyboardModifiers()
-            bengali_char = chr(key_event.key())
+            bengali_char = chr(key_event.key())  # Value Error occur here
+
             if ord('A') <= key_event.key() <= ord('Z'):
                 if modifiers & QtCore.Qt.ShiftModifier:
                     english_char = chr(key_event.key())
@@ -72,7 +73,7 @@ class Window(QtGui.QMainWindow):
 
     @staticmethod
     def close_application():
-        print("Application closed!")
+        print("Application closed")
         sys.exit()
 
 
