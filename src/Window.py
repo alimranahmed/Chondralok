@@ -11,7 +11,7 @@ class Window(QtGui.QMainWindow):
         self.last_bengali_char = ' '
 
         self.setGeometry(50, 50, 500, 300)
-        self.setWindowTitle("Qt Main Window")
+        self.setWindowTitle("Chondralok")
         self.setWindowIcon(QtGui.QIcon("pencil.png"))
 
         self.text_editor = QtGui.QTextEdit()
@@ -26,7 +26,7 @@ class Window(QtGui.QMainWindow):
         action_editor.triggered.connect(self.open_editor)
 
         # status bar
-        self.statusBar().showMessage("Home screen")
+        self.statusBar().showMessage("Write in Bangla...")
 
         # menu bar
         menu_bar = self.menuBar()
@@ -38,18 +38,13 @@ class Window(QtGui.QMainWindow):
         self.show()
 
     def organize_home(self):
-        # btn = QtGui.QPushButton("Click to CLOSE", self)
-        # btn.clicked.connect(self.close_application)
-        # btn.resize(btn.sizeHint())
-        # btn.move(150, 200)
-
         # close action
-        close_action = QtGui.QAction(QtGui.QIcon("pencil.png"), 'Quit with icon', self)
-        close_action.triggered.connect(self.open_editor)
+        open_editor = QtGui.QAction(QtGui.QIcon("pencil.png"), 'Quit with icon', self)
+        open_editor.triggered.connect(self.open_editor)
 
         # toolbar
         toolbar = self.addToolBar("A Toolbar")
-        toolbar.addAction(close_action)
+        toolbar.addAction(open_editor)
 
         self.show()
 
