@@ -7,6 +7,9 @@ class Window(QtGui.QMainWindow):
 
     def __init__(self):
         super(Window, self).__init__()
+        self.english_to_bengali = Eng2BanMap()
+        self.last_bengali_char = ' '
+
         self.setGeometry(50, 50, 500, 300)
         self.setWindowTitle("Qt Main Window")
         self.setWindowIcon(QtGui.QIcon("pencil.png"))
@@ -57,17 +60,16 @@ class Window(QtGui.QMainWindow):
 
     def editor_key_press_event(self, key_event):
         modifiers = QtGui.QApplication.keyboardModifiers()
-
-        if modifiers & QtCore.Qt.ShiftModifier:
-            english_char = chr(key_event.key())
-        else:
-            english_char = chr(key_event.key() + 32)
-
-        english_to_bengali = Eng2BanMap()
-        bengali_char = english_to_bengali.get_bengali_character(english_char)
-        print(english_char + " --> " + bengali_char)
+        bengali_char = chr(key_event.key())
+        if ord('A') <= key_event.key() <= ord('Z'):
+            if modifiers & QtCore.Qt.ShiftModifier:
+                english_char = chr(key_event.key())
+                bengali_char = self.english_to_bengali.get_bengali_character(english_char, self.last_bengali_char)
+            else:
+                english_char = chr(key_event.key() + 32)
+                bengali_char = self.english_to_bengali.get_bengali_character(english_char, self.last_bengali_char)
         self.text_editor.insertPlainText(bengali_char)
-        last_bengali_char = self.text_editor.toPlainText()[-1]
+        self.last_bengali_char = self.text_editor.toPlainText()[-1]
 
     @staticmethod
     def close_application():
