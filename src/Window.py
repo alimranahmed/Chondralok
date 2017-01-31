@@ -59,17 +59,21 @@ class Window(QtGui.QMainWindow):
         self.text_editor.keyPressEvent = self.editor_key_press_event
 
     def editor_key_press_event(self, key_event):
-        modifiers = QtGui.QApplication.keyboardModifiers()
-        bengali_char = chr(key_event.key())
-        if ord('A') <= key_event.key() <= ord('Z'):
-            if modifiers & QtCore.Qt.ShiftModifier:
-                english_char = chr(key_event.key())
-                bengali_char = self.english_to_bengali.get_bengali_character(english_char, self.last_bengali_char)
-            else:
-                english_char = chr(key_event.key() + 32)
-                bengali_char = self.english_to_bengali.get_bengali_character(english_char, self.last_bengali_char)
-        self.text_editor.insertPlainText(bengali_char)
-        self.last_bengali_char = self.text_editor.toPlainText()[-1]
+        try:
+            modifiers = QtGui.QApplication.keyboardModifiers()
+            bengali_char = chr(key_event.key())
+            if ord('A') <= key_event.key() <= ord('Z'):
+                if modifiers & QtCore.Qt.ShiftModifier:
+                    english_char = chr(key_event.key())
+                    bengali_char = self.english_to_bengali.get_bengali_character(english_char, self.last_bengali_char)
+                else:
+                    english_char = chr(key_event.key() + 32)
+                    bengali_char = self.english_to_bengali.get_bengali_character(english_char, self.last_bengali_char)
+            self.text_editor.insertPlainText(bengali_char)
+            self.last_bengali_char = self.text_editor.toPlainText()[-1]
+        except ValueError:
+            print("ERROR: A key pressed that cannot be converted to ASCI code")
+            return
 
     @staticmethod
     def close_application():
