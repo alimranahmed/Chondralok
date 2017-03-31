@@ -2,7 +2,6 @@ import json
 
 
 class Eng2BanMap:
-
     def __init__(self):
         print("JSON parsing...")
         with open('bengali_to_english.json') as letter_map_file:
@@ -11,7 +10,7 @@ class Eng2BanMap:
         print('JSON parsed')
 
     def get_bengali_character(self, english_character, last_char=' '):
-        if not english_character in self.english_to_bengali:
+        if english_character not in self.english_to_bengali:
             return english_character
         if type(self.english_to_bengali[english_character]) is list:
             if last_char is ' ':
