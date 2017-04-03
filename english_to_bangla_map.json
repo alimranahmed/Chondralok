@@ -1,11 +1,302 @@
 [
   {
-    "find":"",
-    "replace":"",
-    "short":"",
-    "type":""
+    "search_for": "o",
+    "replace": "অ",
+    "short_form": "",
+    "type": "vowel"
   },
   {
-
+    "search_for": "a",
+    "replace": "আ",
+    "short_form": "\u09BE",
+    "type": "vowel"
+  },
+  {
+    "search_for": "i",
+    "replace": "ই",
+    "short_form": "\u09BF",
+    "type": "vowel"
+  },
+  {
+    "search_for": "I",
+    "replace": "ঈ",
+    "short_form": "\u09C0",
+    "type": "vowel"
+  },
+  {
+    "search_for": "u",
+    "replace": "উ",
+    "short_form": "\u09C1",
+    "type": "vowel"
+  },
+  {
+    "search_for": "U",
+    "replace": "ঊ",
+    "short_form": "\u09C2",
+    "type": "vowel"
+  },
+  {
+    "search_for": "rri",
+    "replace": "ঋ",
+    "short_form": "\u09C3",
+    "type": "vowel"
+  },
+  {
+    "search_for": "e",
+    "replace": "এ",
+    "short_form": "\u09C7",
+    "type": "vowel"
+  },
+  {
+    "search_for": "oi",
+    "replace": "ঐ",
+    "short_form": "\u09C8",
+    "type": "vowel"
+  },
+  {
+    "search_for": "O",
+    "replace": "ও",
+    "short_form": "\u09CB",
+    "type": "vowel"
+  },
+  {
+    "search_for": "ou",
+    "replace": "ঔ",
+    "short_form": "\u09CC",
+    "type": "vowel"
+  },
+  {
+    "search_for": "k",
+    "replace": "ক",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "kh",
+    "replace": "খ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "g",
+    "replace": "গ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "gh",
+    "replace": "ঘ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "Ng",
+    "replace": "ঙ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "c",
+    "replace": "চ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "ch",
+    "replace": "ছ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "j",
+    "replace": "জ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "jh",
+    "replace": "ঝ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "NG",
+    "replace": "ঞ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "T",
+    "replace": "ট",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "Th",
+    "replace": "ঠ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "D",
+    "replace": "ড",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "Dh",
+    "replace": "ঢ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "N",
+    "replace": "ণ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "t",
+    "replace": "ত",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "th",
+    "replace": "থ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "d",
+    "replace": "দ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "dh",
+    "replace": "ধ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "n",
+    "replace": "ন",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "p",
+    "replace": "প",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "ph",
+    "replace": "ফ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "b",
+    "replace": "ব",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "bh",
+    "replace": "ভ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "m",
+    "replace": "ম",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "z",
+    "replace": "য",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "r",
+    "replace": "র",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "l",
+    "replace": "ল",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "sh",
+    "replace": "শ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "Sh",
+    "replace": "ষ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "s",
+    "replace": "স",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "h",
+    "replace": "হ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "y",
+    "replace": "য়",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "t``",
+    "replace": "ৎ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "ng",
+    "replace": "ং",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": ":",
+    "replace": "ঃ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "^",
+    "replace": "ঁ",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": ".",
+    "replace": "।",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "$",
+    "replace": "৳",
+    "short_form": "",
+    "type": "consonant"
   }
 ]
