@@ -17,6 +17,6 @@ class LangMap:
 
     @staticmethod
     def load_map():
-        json_path = '../assets/json/english_to_bangla_map.json'
+        json_path = '/var/www/html/Chondralok/src/assets/json/english_to_bangla_map.json'
         return Utility.load_json(json_path)
 langMap = LangMap()
