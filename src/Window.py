@@ -1,6 +1,8 @@
 import sys
+
 from PyQt4 import QtGui, QtCore
-from src.Eng2BanMap import Eng2BanMap
+
+from src.core.Engine import Eng2BanMap
 
 
 class Window(QtGui.QMainWindow):
