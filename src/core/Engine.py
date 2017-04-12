@@ -17,7 +17,8 @@ class Eng2BanMap:
 
     def get_char_to_replace(self, eng_chars, last_eng_char):
         if eng_chars not in self.eng_to_ban_map:
-            return eng_chars
+            print(eng_chars+"'Not available in the map")
+            return ''
 
         if self.eng_to_ban_map[eng_chars]['type'] == 'vowel':
             if last_eng_char is ' ':
