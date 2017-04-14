@@ -62,12 +62,20 @@ class Window(QtGui.QMainWindow):
             bengali_char = chr(key_event.key())  # Value Error occur here
 
             if ord('A') <= key_event.key() <= ord('Z'):
-                english_char = Window.get_eng_char(key_event, modifier, shift_modifier)
-                bengali_char = self.engine.get_ban_char(english_char, self.last_eng_chars)
+                pressed_eng_char = Window.get_eng_char(key_event, modifier, shift_modifier)
+                bengali_char = self.engine.get_ban_char(pressed_eng_char, self.last_eng_chars)
 
-            self.text_editor.insertPlainText(bengali_char)
             self.last_eng_chars[0] = self.last_eng_chars[1]
-            self.last_eng_chars[1] = english_char
+            self.last_eng_chars[1] = pressed_eng_char
+            if(bengali_char[1] == 0):
+                self.text_editor.insertPlainText(bengali_char[0])
+            elif bengali_char[1] == 1:
+                self.text_editor.textCursor().deletePreviousChar()
+                self.text_editor.insertPlainText(bengali_char[0])
+            elif bengali_char[1] == 2:
+                self.text_editor.textCursor().deletePreviousChar()
+                self.text_editor.textCursor().deletePreviousChar()
+                self.text_editor.insertPlainText(bengali_char[0])
         except Exception as e:
             print("ERROR Caught: ")
             print(e)
