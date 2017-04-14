@@ -57,11 +57,12 @@ class Window(QtGui.QMainWindow):
 
     def editor_key_press_event(self, key_event):
         try:
-            modifiers = QtGui.QApplication.keyboardModifiers()
+            modifier = QtGui.QApplication.keyboardModifiers()
+            shift_modifier = QtCore.Qt.ShiftModifier
             bengali_char = chr(key_event.key())  # Value Error occur here
 
             if ord('A') <= key_event.key() <= ord('Z'):
-                english_char = Window.get_eng_char(key_event, modifiers, QtCore.Qt.ShiftModifier)
+                english_char = Window.get_eng_char(key_event, modifier, shift_modifier)
                 bengali_char = self.engine.get_ban_char(english_char, self.last_eng_char)
 
             self.text_editor.insertPlainText(bengali_char)
@@ -71,8 +72,9 @@ class Window(QtGui.QMainWindow):
             print(e)
 
     @staticmethod
-    def get_eng_char(key_event, modifiers, is_shift):
-        return chr(key_event.key()) if modifiers and is_shift else chr(key_event.key() + 32)
+    def get_eng_char(key_event, modifier, is_shift):
+        key = key_event.key()
+        return chr(key) if modifier and is_shift else chr(key + 32)
 
     @staticmethod
     def close_application():
