@@ -2,14 +2,14 @@ import sys
 
 from PyQt4 import QtGui, QtCore
 
-from src.core.Engine import Eng2BanMap
+from src.core.Engine import Engine
 
 
 class Window(QtGui.QMainWindow):
 
     def __init__(self):
         super(Window, self).__init__()
-        self.english_to_bengali = Eng2BanMap()
+        self.engine = Engine()
         self.last_eng_char = ' '
 
         self.setGeometry(50, 50, 700, 400)
@@ -61,17 +61,18 @@ class Window(QtGui.QMainWindow):
             bengali_char = chr(key_event.key())  # Value Error occur here
 
             if ord('A') <= key_event.key() <= ord('Z'):
-                if modifiers & QtCore.Qt.ShiftModifier:
-                    english_char = chr(key_event.key())
-                    bengali_char = self.english_to_bengali.get_bengali_character(english_char, self.last_eng_char)
-                else:
-                    english_char = chr(key_event.key() + 32)
-                    bengali_char = self.english_to_bengali.get_bengali_character(english_char, self.last_eng_char)
+                english_char = Window.get_eng_char(key_event, modifiers, QtCore.Qt.ShiftModifier)
+                bengali_char = self.engine.get_ban_char(english_char, self.last_eng_char)
+
             self.text_editor.insertPlainText(bengali_char)
             self.last_eng_char = english_char
-        except ValueError:
-            print("ERROR: A key pressed that cannot be converted to ASCI code")
-            return
+        except Exception as e:
+            print("ERROR Caught: ")
+            print(e)
+
+    @staticmethod
+    def get_eng_char(key_event, modifiers, is_shift):
+        return chr(key_event.key()) if modifiers and is_shift else chr(key_event.key() + 32)
 
     @staticmethod
     def close_application():
