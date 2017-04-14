@@ -10,7 +10,7 @@ class Window(QtGui.QMainWindow):
     def __init__(self):
         super(Window, self).__init__()
         self.engine = Engine()
-        self.last_eng_char = ' '
+        self.last_eng_char = [' ', ' ', ' ']
 
         self.setGeometry(50, 50, 700, 400)
         self.setWindowTitle("Chondralok")
@@ -66,7 +66,8 @@ class Window(QtGui.QMainWindow):
                 bengali_char = self.engine.get_ban_char(english_char, self.last_eng_char)
 
             self.text_editor.insertPlainText(bengali_char)
-            self.last_eng_char = english_char
+            self.last_eng_char[0] = self.last_eng_char[1]
+            self.last_eng_char[1] = english_char
         except Exception as e:
             print("ERROR Caught: ")
             print(e)
