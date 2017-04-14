@@ -8,11 +8,14 @@ class Engine:
     def get_ban_char(self, eng_char, last_eng_chars):
         # letters with more than one character
         if last_eng_chars[0]+last_eng_chars[1]+eng_char in self.eng_to_ban_map:
-            return self.get_char_to_replace(last_eng_chars[0]+last_eng_chars[1]+eng_char, last_eng_chars[1])
+            add_char = self.get_char_to_replace(last_eng_chars[0]+last_eng_chars[1]+eng_char, last_eng_chars[1])
+            return [add_char, 2]
         elif last_eng_chars[1]+eng_char in self.eng_to_ban_map:
-            return self.get_char_to_replace(last_eng_chars[1] + eng_char, last_eng_chars[1])
+            add_char = self.get_char_to_replace(last_eng_chars[1] + eng_char, last_eng_chars[1])
+            return [add_char, 1]
         else:
-            return self.get_char_to_replace(eng_char, last_eng_chars[1])
+            add_char = self.get_char_to_replace(eng_char, last_eng_chars[1])
+            return [add_char, 0]
 
     def get_char_to_replace(self, eng_chars, last_eng_char):
         if eng_chars not in self.eng_to_ban_map:
