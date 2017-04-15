@@ -264,6 +264,18 @@
     "type": "consonant"
   },
   {
+    "search_for": "R",
+    "replace": "ড়",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
+    "search_for": "Rh",
+    "replace": "ঢ়",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
     "search_for": "t``",
     "replace": "ৎ",
     "short_form": "",
