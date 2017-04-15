@@ -67,7 +67,7 @@ class Window(QtGui.QMainWindow):
 
             self.last_eng_chars[0] = self.last_eng_chars[1]
             self.last_eng_chars[1] = pressed_eng_char
-            if(bengali_char[1] == 0):
+            if bengali_char[1] == 0:
                 self.text_editor.insertPlainText(bengali_char[0])
             elif bengali_char[1] == 1:
                 self.text_editor.textCursor().deletePreviousChar()
