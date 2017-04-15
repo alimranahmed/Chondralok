@@ -19,10 +19,10 @@ class Engine:
 
     def get_char_to_replace(self, eng_chars, last_eng_char):
         if eng_chars not in self.eng_to_ban_map:
-            return ''
+            return eng_chars
 
         if self.eng_to_ban_map[eng_chars]['type'] == 'vowel':
-            if last_eng_char is ' ':
+            if last_eng_char is ' ' or self.eng_to_ban_map[last_eng_char]['type'] == 'vowel':
                 return self.eng_to_ban_map[eng_chars]['replace']
             else:
                 return self.eng_to_ban_map[eng_chars]['short_form']
