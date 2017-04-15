@@ -6,7 +6,6 @@ from src.core.Engine import Engine
 
 
 class Window(QtGui.QMainWindow):
-
     def __init__(self):
         super(Window, self).__init__()
         self.engine = Engine()
@@ -56,34 +55,32 @@ class Window(QtGui.QMainWindow):
         self.text_editor.keyPressEvent = self.editor_key_press_event
 
     def editor_key_press_event(self, key_event):
-        try:
-            modifier = QtGui.QApplication.keyboardModifiers()
-            shift_modifier = QtCore.Qt.ShiftModifier
-            bengali_char = chr(key_event.key())  # Value Error occur here
+        modifier = QtGui.QApplication.keyboardModifiers()
+        shift_modifier = QtCore.Qt.ShiftModifier
+        bengali_char = ''  # Value Error occur here
 
-            if ord('A') <= key_event.key() <= ord('Z'):
-                pressed_eng_char = Window.get_eng_char(key_event, modifier, shift_modifier)
-                bengali_char = self.engine.get_ban_char(pressed_eng_char, self.last_eng_chars)
+        if ord('A') <= key_event.key() <= ord('Z'):
+            pressed_eng_char = Window.get_eng_char(key_event, modifier, shift_modifier)
+        else:
+            pressed_eng_char = chr(key_event.key())
+        bengali_char = self.engine.get_ban_char(pressed_eng_char, self.last_eng_chars)
 
-            self.last_eng_chars[0] = self.last_eng_chars[1]
-            self.last_eng_chars[1] = pressed_eng_char
-            if bengali_char[1] == 0:
-                self.text_editor.insertPlainText(bengali_char[0])
-            elif bengali_char[1] == 1:
-                self.text_editor.textCursor().deletePreviousChar()
-                self.text_editor.insertPlainText(bengali_char[0])
-            elif bengali_char[1] == 2:
-                self.text_editor.textCursor().deletePreviousChar()
-                self.text_editor.textCursor().deletePreviousChar()
-                self.text_editor.insertPlainText(bengali_char[0])
-        except Exception as e:
-            print("ERROR Caught: ")
-            print(e)
+        self.last_eng_chars[0] = self.last_eng_chars[1]
+        self.last_eng_chars[1] = pressed_eng_char
+        if bengali_char[1] == 0:
+            self.text_editor.insertPlainText(bengali_char[0])
+        elif bengali_char[1] == 1:
+            self.text_editor.textCursor().deletePreviousChar()
+            self.text_editor.insertPlainText(bengali_char[0])
+        elif bengali_char[1] == 2:
+            self.text_editor.textCursor().deletePreviousChar()
+            self.text_editor.textCursor().deletePreviousChar()
+            self.text_editor.insertPlainText(bengali_char[0])
 
     @staticmethod
-    def get_eng_char(key_event, modifier, is_shift):
+    def get_eng_char(key_event, modifier, shift_modifier):
         key = key_event.key()
-        return chr(key) if modifier and is_shift else chr(key + 32)
+        return chr(key) if modifier and shift_modifier else chr(key + 32)
 
     @staticmethod
     def close_application():
@@ -96,5 +93,5 @@ def run():
     window = Window()
     sys.exit(app.exec_())
 
-run()
 
+run()
