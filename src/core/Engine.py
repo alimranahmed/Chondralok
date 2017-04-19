@@ -9,13 +9,13 @@ class Engine:
         # letters with more than one character
         if last_eng_chars[0]+last_eng_chars[1]+eng_char in self.eng_to_ban_map:
             add_char = self.get_char_to_replace(last_eng_chars[0]+last_eng_chars[1]+eng_char, last_eng_chars[1])
-            return [add_char, 2]
+            return {"ban_char": add_char, "replace_count": 2}
         elif last_eng_chars[1]+eng_char in self.eng_to_ban_map:
             add_char = self.get_char_to_replace(last_eng_chars[1] + eng_char, last_eng_chars[1])
-            return [add_char, 1]
+            return {"ban_char": add_char, "replace_count": 1}
         else:
             add_char = self.get_char_to_replace(eng_char, last_eng_chars[1])
-            return [add_char, 0]
+            return {"ban_char": add_char, "replace_count": 0}
 
     def get_char_to_replace(self, eng_chars, last_eng_char):
         if eng_chars not in self.eng_to_ban_map:
