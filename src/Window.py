@@ -1,6 +1,7 @@
 import sys
 
 from PyQt4 import QtGui, QtCore
+from PyQt4.QtCore import Qt
 
 from src.core.Engine import Engine
 
@@ -60,7 +61,7 @@ class Window(QtGui.QMainWindow):
 
         if ord('A') <= key_event.key() <= ord('Z'):
             pressed_eng_char = Window.get_eng_char(key_event, modifier, shift_modifier)
-        elif key_event.key() == 16777219:
+        elif key_event.key() == Qt.Key_Backspace:
             # when backspace pressed
             self.text_editor.textCursor().deletePreviousChar()
         else:
