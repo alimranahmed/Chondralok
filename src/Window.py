@@ -57,25 +57,29 @@ class Window(QtGui.QMainWindow):
     def editor_key_press_event(self, key_event):
         modifier = QtGui.QApplication.keyboardModifiers()
         shift_modifier = QtCore.Qt.ShiftModifier
-        bengali_char = ''  # Value Error occur here
 
         if ord('A') <= key_event.key() <= ord('Z'):
             pressed_eng_char = Window.get_eng_char(key_event, modifier, shift_modifier)
+        elif key_event.key() == 16777219:
+            # when backspace pressed
+            self.text_editor.textCursor().deletePreviousChar()
         else:
+            print(key_event.key())
             pressed_eng_char = chr(key_event.key())
-        bengali_char = self.engine.get_ban_char(pressed_eng_char, self.last_eng_chars)
+
+        replace_map = self.engine.get_ban_char(pressed_eng_char, self.last_eng_chars)
 
         self.last_eng_chars[0] = self.last_eng_chars[1]
         self.last_eng_chars[1] = pressed_eng_char
-        if bengali_char[1] == 0:
-            self.text_editor.insertPlainText(bengali_char[0])
-        elif bengali_char[1] == 1:
+        if replace_map['replace_count'] == 0:
+            self.text_editor.insertPlainText(replace_map['ban_char'])
+        elif replace_map['replace_count'] == 1:
             self.text_editor.textCursor().deletePreviousChar()
-            self.text_editor.insertPlainText(bengali_char[0])
-        elif bengali_char[1] == 2:
+            self.text_editor.insertPlainText(replace_map['ban_char'])
+        elif replace_map['replace_count'] == 2:
             self.text_editor.textCursor().deletePreviousChar()
             self.text_editor.textCursor().deletePreviousChar()
-            self.text_editor.insertPlainText(bengali_char[0])
+            self.text_editor.insertPlainText(replace_map['ban_char'])
 
     @staticmethod
     def get_eng_char(key_event, modifier, shift_modifier):
