@@ -310,5 +310,11 @@
     "replace": "৳",
     "short_form": "",
     "type": "consonant"
+  },
+  {
+    "search_for": ",,",
+    "replace": "্‌",
+    "short_form": "",
+    "type": "consonant"
   }
 ]
