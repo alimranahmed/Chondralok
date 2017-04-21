@@ -64,9 +64,11 @@ class Window(QtGui.QMainWindow):
         elif key_event.key() == Qt.Key_Backspace:
             # when backspace pressed
             self.text_editor.textCursor().deletePreviousChar()
-        else:
-            print(key_event.key())
+            return
+        elif key_event.key() == Qt.Key_Space:
             pressed_eng_char = chr(key_event.key())
+        else:
+            return
 
         replace_map = self.engine.get_ban_char(pressed_eng_char, self.last_eng_chars)
 
