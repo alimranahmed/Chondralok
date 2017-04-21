@@ -228,6 +228,12 @@
     "type": "consonant"
   },
   {
+    "search_for": "rr",
+    "replace": "র্‌",
+    "short_form": "",
+    "type": "consonant"
+  },
+  {
     "search_for": "l",
     "replace": "ল",
     "short_form": "",
