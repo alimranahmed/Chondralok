@@ -59,15 +59,20 @@ class Window(QtGui.QMainWindow):
         modifier = QtGui.QApplication.keyboardModifiers()
         shift_modifier = QtCore.Qt.ShiftModifier
 
-        if ord('A') <= key_event.key() <= ord('Z'):
-            pressed_eng_char = Window.get_eng_char(key_event, modifier, shift_modifier)
-        elif key_event.key() == Qt.Key_Backspace:
-            # when backspace pressed
-            self.text_editor.textCursor().deletePreviousChar()
-            return
-        elif key_event.key() == Qt.Key_Space:
-            pressed_eng_char = chr(key_event.key())
-        else:
+        try:
+            if ord('A') <= key_event.key() <= ord('Z'):
+                pressed_eng_char = Window.get_eng_char(key_event, modifier, shift_modifier)
+            elif key_event.key() == Qt.Key_Backspace:
+                self.text_editor.textCursor().deletePreviousChar()
+                return
+            elif key_event.key() == Qt.Key_Return:
+                self.text_editor.insertPlainText("\n")
+                return
+            else:
+                pressed_eng_char = chr(key_event.key())
+
+        except ValueError as e:
+            print("Key cannot be converted to character")
             return
 
         replace_map = self.engine.get_ban_char(pressed_eng_char, self.last_eng_chars)
