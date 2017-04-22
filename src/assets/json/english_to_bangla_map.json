@@ -246,7 +246,7 @@
     "type": "consonant"
   },
   {
-    "search_for": "Sh",
+    "search_for": ["Sh", "SH"],
     "replace": "ষ",
     "short_form": "",
     "type": "consonant"
