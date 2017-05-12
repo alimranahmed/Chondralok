@@ -1,8 +1,6 @@
 import sys
-
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import Qt
-
 from src.core.Engine import Engine
 
 
@@ -98,12 +96,3 @@ class Window(QtGui.QMainWindow):
     def close_application():
         print("Application closed")
         sys.exit()
-
-
-def run():
-    app = QtGui.QApplication(sys.argv)
-    window = Window()
-    sys.exit(app.exec_())
-
-
-run()
