@@ -322,5 +322,11 @@
     "replace": "্‌",
     "short_form": "",
     "type": "consonant"
+  },
+  {
+    "search_for": "kkh",
+    "replace": "ক্ষ‌",
+    "short_form": "",
+    "type": "consonant"
   }
 ]
