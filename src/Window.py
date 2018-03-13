@@ -1,10 +1,10 @@
 import sys
-from PyQt4 import QtGui, QtCore
-from PyQt4.QtCore import Qt
+from PyQt5 import QtGui, QtCore, QtWidgets
+from PyQt5.QtCore import Qt
 from src.core.Engine import Engine
 
 
-class Window(QtGui.QMainWindow):
+class Window(QtWidgets.QMainWindow):
     def __init__(self):
         super(Window, self).__init__()
         self.engine = Engine()
@@ -14,14 +14,14 @@ class Window(QtGui.QMainWindow):
         self.setWindowTitle("Chondralok")
         self.setWindowIcon(QtGui.QIcon("pencil.png"))
 
-        self.text_editor = QtGui.QTextEdit()
+        self.text_editor = QtWidgets.QTextEdit()
 
         # menu action
-        action_quit = QtGui.QAction("&Quit", self)
+        action_quit = QtWidgets.QAction("&Quit", self)
         action_quit.setShortcut("Ctrl+Q")
         action_quit.triggered.connect(self.close_application)
 
-        action_editor = QtGui.QAction("&Open Editor", self)
+        action_editor = QtWidgets.QAction("&Open Editor", self)
         action_editor.setShortcut("Ctrl+E")
         action_editor.triggered.connect(self.open_editor)
 
@@ -39,7 +39,7 @@ class Window(QtGui.QMainWindow):
 
     def organize_home(self):
         # close action
-        open_editor = QtGui.QAction(QtGui.QIcon("pencil.png"), 'Open editor', self)
+        open_editor = QtWidgets.QAction(QtGui.QIcon("pencil.png"), 'Open editor', self)
         open_editor.triggered.connect(self.open_editor)
 
         # toolbar
@@ -54,7 +54,7 @@ class Window(QtGui.QMainWindow):
         self.text_editor.keyPressEvent = self.editor_key_press_event
 
     def editor_key_press_event(self, key_event):
-        modifier = QtGui.QApplication.keyboardModifiers()
+        modifier = QtWidgets.QApplication.keyboardModifiers()
         shift_modifier = QtCore.Qt.ShiftModifier
 
         try:

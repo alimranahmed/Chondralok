@@ -1,7 +1,6 @@
 import datetime
 import json
 
-
 class Utility:
     @staticmethod
     def log(class_name, method_name, message):
@@ -12,5 +11,6 @@ class Utility:
 
     @staticmethod
     def load_json(json_path):
-        with open(json_path) as letter_map_file:
-            return json.load(letter_map_file)
+        with open(json_path, encoding='utf-8-sig') as letter_map_file:
+            json_text = letter_map_file.read()
+            return json.loads(json_text)
